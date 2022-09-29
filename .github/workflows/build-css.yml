@@ -32,4 +32,5 @@ jobs:
       
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
-        commit_message: build css by github actions
+        with:
+          commit_message: build css by github actions
