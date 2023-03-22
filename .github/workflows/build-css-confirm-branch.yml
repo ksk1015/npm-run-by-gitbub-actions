@@ -1,0 +1,36 @@
+name: Build css and commit (Confirm branch)
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: '対象ブランチを選択し、そのブランチ名を入力して実行してください'
+        required: true
+        default: ''
+    branches: [ '*' ]
+
+jobs:
+  build:
+    if: github.event.inputs.confirmation == github.ref#refs/heads/
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: npm
+      
+      - name: Install node modules
+        run: npm install
+
+      - name: Build css
+        run: npm run build
+      
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: build css by github actions
