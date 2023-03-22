@@ -1,0 +1,22 @@
+{
+  "name": "npm-run-by-gitbub-actions-at-sub-directory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass scss/index.scss css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksk1015/npm-run-by-gitbub-actions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksk1015/npm-run-by-gitbub-actions/issues"
+  },
+  "homepage": "https://github.com/ksk1015/npm-run-by-gitbub-actions#readme",
+  "devDependencies": {
+    "sass": "^1.55.0"
+  }
+}

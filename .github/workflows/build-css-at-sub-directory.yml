@@ -1,0 +1,38 @@
+name: Build css and commit at sub directory
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'cssをビルド・コミットする場合は ok と入力してください'
+        required: true
+        default: ''
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    if: github.event.inputs.confirmation == 'ok'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: npm
+      
+      - name: Install node modules
+        run: npm install
+        working-directory: ./sub
+
+      - name: Build css
+        run: npm run build
+        working-directory: ./sub
+      
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: build css by github actions
