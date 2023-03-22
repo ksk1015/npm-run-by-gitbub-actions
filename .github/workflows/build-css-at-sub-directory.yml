@@ -25,7 +25,7 @@ jobs:
           cache: npm
       
       - name: Install node modules
-        run: npm install
+        run: npm install sass
         working-directory: ./sub
 
       - name: Build css
