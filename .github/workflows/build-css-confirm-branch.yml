@@ -1,16 +1,16 @@
-name: Build css and commit at sub directory
+name: Build css and commit (Confirm branch)
 on:
   workflow_dispatch:
     inputs:
       confirmation:
-        description: 'cssをビルド・コミットする場合は ok と入力してください'
+        description: '対象ブランチを選択し、そのブランチ名を入力して実行してください'
         required: true
         default: ''
     branches: [ '*' ]
 
 jobs:
   build:
-    if: github.event.inputs.confirmation == 'ok'
+    if: github.event.inputs.confirmation == github.ref#refs/heads/
 
     runs-on: ubuntu-latest
 
@@ -26,11 +26,9 @@ jobs:
       
       - name: Install node modules
         run: npm install
-        working-directory: ./sub
 
       - name: Build css
         run: npm run build
-        working-directory: ./sub
       
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
