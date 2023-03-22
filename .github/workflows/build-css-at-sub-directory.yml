@@ -6,7 +6,7 @@ on:
         description: 'cssをビルド・コミットする場合は ok と入力してください'
         required: true
         default: ''
-    branches: [ main, develop ]
+    branches: [ '*' ]
 
 jobs:
   build:
