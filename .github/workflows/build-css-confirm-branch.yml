@@ -6,7 +6,7 @@ on:
         description: '対象ブランチを選択し、そのブランチ名を入力して実行してください'
         required: true
         default: ''
-    branches: [ '*' ]
+    # branches: [ '*' ]
 
 jobs:
   build:
