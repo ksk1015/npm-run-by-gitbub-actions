@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.inputs.confirmation == 'refs/heads/' + github.ref }}
+    if: github.event.inputs.confirmation == ('refs/heads/' + github.ref)
 
     runs-on: ubuntu-latest
 
